@@ -1,0 +1,11 @@
+nome = input("digite seu nome: ")
+idade = int(input("digite sua idade: "))
+cpf = int(input("digite seu cpf (somente números): "))
+rua = input("digite o nome da sua rua: ")
+bairro = input("digite o nome do seu bairro: ")
+numero = int(input("digite o número da sua residência: "))
+
+print(f"Parabéns {nome} de {idade} anos. ")
+print(f"Portador do cpf nº {cpf}. ")
+print(f"Residente na rua {rua}, nº {numero} - {bairro} ")
+print(f"Seu cadastro foi realizado com sucesso ! ")

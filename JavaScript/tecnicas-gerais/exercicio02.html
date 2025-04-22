@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de JavaScript</title>
+</head>
+<body>
+    <h1>Avaliação de Expressões Booleanas</h1>
+
+    <p id="paragrafo">O resultado da avaliação aparecerá aqui</p>
+
+    <script>
+        // Declaração de variáveis
+        let nota = 8;
+        let maiorQueSete = nota >= 7;
+        let resultado = "";
+
+        if (maiorQueSete == true){
+            resultado = "aprovado";
+        }else{
+            resultado = "reprovado";
+        }
+
+        // Usando getElementById e document.write
+        document.getElementById('paragrafo').innerHTML = "A nota é maior que 7? " + maiorQueSete;
+        document.write("O aluno está " + resultado)
+    </script>
+</body>
+</html>

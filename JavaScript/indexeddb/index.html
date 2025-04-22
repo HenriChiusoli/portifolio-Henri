@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de IndexedDB com Front-End</title>
+  <style>
+    :root {
+      --main-bg-color: #f0f0f0;
+      --main-text-color: #333;
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --font-size: 16px;
+      --padding: 10px;
+    }
+
+    body {
+      background-color: var(--main-bg-color);
+      color: var(--main-text-color);
+      font-size: var(--font-size);
+      padding: var(--padding);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: var(--padding);
+      text-align: center;
+    }
+
+    p {
+      margin: var(--padding) 0;
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: var(--padding);
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--secondary-color);
+    }
+
+    form {
+      margin: var(--padding) 0;
+    }
+
+    input {
+      padding: var(--padding);
+      margin-right: var(--padding);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: white;
+      margin: var(--padding) 0;
+      padding: var(--padding);
+      border: 1px solid var(--main-text-color);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bem-vindo ao Meu Site</h1>
+  </header>
+  <main>
+    <p>Este é um exemplo de como usar IndexedDB com um front-end.</p>
+    <form id="dataForm">
+      <input type="text" id="nome" placeholder="Nome" required>
+      <input type="number" id="idade" placeholder="Idade" required>
+      <button type="submit">Adicionar</button>
+    </form>
+    <ul id="dataList"></ul>
+  </main>
+  <script>
+    let db;
+
+    // Abrir (ou criar) o banco de dados
+    let request = indexedDB.open("meuBancoDeDados", 1);
+
+    request.onupgradeneeded = function(event) {
+      db = event.target.result;
+
+      // Criar um objeto de armazenamento (store)
+      let objectStore = db.createObjectStore("meuObjeto", { keyPath: "id", autoIncrement: true });
+
+      // Criar um índice para buscar por nome
+      objectStore.createIndex("nome", "nome", { unique: false });
+    };
+
+    request.onsuccess = function(event) {
+      db = event.target.result;
+      // Ler dados ao carregar a página
+      readData();
+    };
+
+    request.onerror = function(event) {
+      console.log("Erro ao abrir o banco de dados:", event.target.errorCode);
+    };
+
+    document.getElementById('dataForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      addData();
+    });
+
+    function addData() {
+      let nome = document.getElementById('nome').value;
+      let idade = document.getElementById('idade').value;
+
+      let transaction = db.transaction(["meuObjeto"], "readwrite");
+      let objectStore = transaction.objectStore("meuObjeto");
+      let requestAdd = objectStore.add({ nome: nome, idade: idade });
+
+      requestAdd.onsuccess = function(event) {
+        console.log("Dados adicionados com sucesso!");
+        readData(); // Atualizar a lista de dados
+      };
+
+      requestAdd.onerror = function(event) {
+        console.log("Erro ao adicionar dados:", event.target.errorCode);
+      };
+    }
+
+    function readData() {
+      let transaction = db.transaction(["meuObjeto"], "readonly");
+      let objectStore = transaction.objectStore("meuObjeto");
+      let requestGetAll = objectStore.getAll();
+
+      requestGetAll.onsuccess = function(event) {
+        let dataList = document.getElementById('dataList');
+        dataList.innerHTML = ''; // Limpar a lista antes de adicionar os dados
+
+        event.target.result.forEach(function(item) {
+          let li = document.createElement('li');
+          li.textContent = `Nome: ${item.nome}, Idade: ${item.idade}`;
+          dataList.appendChild(li);
+        });
+      };
+
+      requestGetAll.onerror = function(event) {
+        console.log("Erro ao recuperar dados:", event.target.errorCode);
+      };
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMind - Para mentes apaixonadas por tecnologia</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&display=swap" rel="stylesheet">
+
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <img src="imagens/logo-1-SF.png" alt="Logo TechMind">
+
+    <div class="menu">
+
+        <img id="cursosonline" src="imagens/1.png" alt="cursos online" onclick="paginaCurso(event)">
+        <img src="imagens/2.png" alt="videoaulas">
+        <img src="imagens/3.png" alt="desafios de código">
+        <img src="imagens/4.png" alt="exercícios interativos">
+
+    </div>
+
+    <div class="barra-pesquisa">
+        <form action="pesquisa.html" method="GET">
+            <label for="pesquisar">Pesquisar: </label>
+            <input type="search" id="pesquisar" name="query" placeholder="Digite sua pesquisa...">
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 TechMind - Todos os direitos reservados.</p>
+            <nav>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Política de Privacidade</a>
+            </nav>
+        </div>
+    </footer>
+    
+    <script>
+
+        function paginaCurso(event){
+            const url = `cursos.html?shift=${event.shiftkey}`;
+            
+            if (event.shiftKey){
+                window.open(url,"_blank"); 
+            }else{
+                window.location.href = url;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

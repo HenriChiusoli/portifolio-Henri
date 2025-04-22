@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de Variáveis de CSS</title>
+  <style>
+    :root {
+      --main-bg-color: #f0f0f0;
+      --main-text-color: #333;
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --font-size: 16px;
+      --padding: 10px;
+    }
+
+    body {
+      background-color: var(--main-bg-color);
+      color: var(--main-text-color);
+      font-size: var(--font-size);
+      padding: var(--padding);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: var(--padding);
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--secondary-color);
+    }
+
+    p {
+      margin: var(--padding) 0;
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: var(--padding);
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--secondary-color);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bem-vindo ao Meu Site</h1>
+  </header>
+  <main>
+    <p>Este é um exemplo de como usar variáveis de CSS para criar um tema consistente e fácil de manter.</p>
+    <button id="themeButton">Mudar Tema</button>
+  </main>
+  <script>
+    const button = document.getElementById('themeButton');
+    button.addEventListener('click', () => {
+      const root = document.documentElement;
+      root.style.setProperty('--main-bg-color', '#333');
+      root.style.setProperty('--main-text-color', '#f0f0f0');
+      root.style.setProperty('--primary-color', '#e74c3c');
+      root.style.setProperty('--secondary-color', '#8e44ad');
+    });
+  </script>
+</body>
+</html>

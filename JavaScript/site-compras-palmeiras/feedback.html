@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado e Feedback</title>
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <div class="feedback-container">
+        <h1>Obrigado pela sua compra!</h1>
+        <p>Seu pedido foi finalizado com sucesso. Gostaríamos de saber sua opinião!</p>
+        <form id="feedbackForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome">
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Seu e-mail">
+
+            <label for="experience">Como foi sua experiência?</label>
+            <select id="experience" name="experience">
+                <option value="excelente">Excelente</option>
+                <option value="boa">Boa</option>
+                <option value="regular">Regular</option>
+                <option value="ruim">Ruim</option>
+            </select>
+
+            <label for="comments">Comentários:</label>
+            <textarea id="comments" name="comments" placeholder="Escreva aqui suas observações"></textarea>
+
+            <button type="button" onclick="sendFeedback()">Enviar Feedback</button>
+        </form>
+    </div>
+
+    <script>
+        function sendFeedback() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const experience = document.getElementById('experience').value;
+            const comments = document.getElementById('comments').value.trim();
+    
+            if (!name || !email || !comments) {
+                alert('Por favor, preencha todos os campos obrigatórios antes de enviar.');
+                return;
+            }
+    
+            const feedbackData = {
+                name,
+                email,
+                experience,
+                comments,
+            };
+    
+            console.log('Feedback enviado:', feedbackData);
+            alert('Obrigado pelo seu feedback!');
+            document.getElementById('feedbackForm').reset(); // Limpa o formulário
+    
+            // Redireciona para a página inicial
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

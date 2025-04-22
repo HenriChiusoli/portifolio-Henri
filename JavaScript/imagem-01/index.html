@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando com imagens em JS</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body{
+            height: 100%;
+            width: 100%;
+            line-height: 1.5; 
+            font-size: 100%;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, input, textarea{
+            font: inherit;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1{
+            margin: 0 0 20px 0;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #image-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            background-color: white;
+            padding: 20px;
+        }
+
+        img{
+            border-radius: 20px;
+            width: 300px;
+            height: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons-container{
+            margin-top: 20px;
+        }
+
+        .buttons-container button{
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .buttons-container button:hover{
+            background-color: #0056b3;
+            color: white;
+        }
+
+        canvas{
+            display: none; /* ocultar no início */
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <h1>Manipulação de Imagens via JavaScript</h1>
+        <img id="img-equino" src="imagens/Mangalarga-horse.png" alt="Mangalarga-horse">
+        <canvas id="canvas"></canvas>
+
+        <div class="buttons-container">
+            <button id="btnChavear">Mula troteira</button>
+            <button id="btnTamanho">Aumentar tamanho</button>
+            <button id="btnFiltro">Aplicar filtro</button>
+        </div>
+    </div>
+
+    <script>
+        // função que será executada automaticamente quando a página terminar de carregar
+        // garante que a imagem tenha seu tamanho ajustado automaticamente para manter a proporção
+        window.onload = function(){
+            document.getElementById("img-equino").style.width = "300px";
+            document.getElementById("img-equino").style.height = "auto";
+        }; 
+        let image = document.getElementById("img-equino");
+
+        document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("btnChavear").addEventListener("click", function(){
+                let button = document.getElementById("btnChavear");
+                
+                if (image.src.includes('Mangalarga-horse')){
+                    image.src = "imagens/Mula-troteira.png";
+                    button.textContent = "Cavalo Mangalarga";
+                }else{
+                    image.src = "imagens/Mangalarga-horse.png";
+                    button.textContent = "Mula troteira";
+                }
+            })
+
+            document.getElementById("btnTamanho").addEventListener("click", function(){
+                let button = document.getElementById("btnTamanho");
+
+                if (image.style.width === "300px"){
+                    image.style.width = "350px";
+                    image.style.height = "auto";
+                    button.textContent = "Tamanho original";
+
+                }else{
+                    image.style.width = "300px";
+                    image.style.height = "auto";
+                    button.textContent = "Aumentar tamanho";
+                }
+            })
+
+            document.getElementById("btnFiltro").addEventListener("click", function(){
+                let button = document.getElementById("btnFiltro");
+
+                if (button.textContent === "Aplicar filtro"){
+                    aplicarFiltro();
+                    button.textContent = "Remover filtro";
+
+                }else{
+                    removerFiltro();
+                    button.textContent = "Aplicar filtro";
+                }
+
+            });
+
+            function aplicarFiltro(){
+                let canvas = document.getElementById("canvas");
+                let ctx = canvas.getContext("2d");
+
+                // Configurar o canvas com 300 x 300px
+                canvas.width = 300;
+                canvas.height = 300;
+
+                // Desenhar a imagem redimensionada para preencher o canvas
+                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+                // Aplicar o filtro
+                ctx.filter = "grayscale(100%)";
+
+                // Redesenhar a imagem com o filtro aplicado
+                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+                // Exibir o canvas
+                // block: exibe
+                canvas.style.display = "block";
+
+                // none: oculta
+                // Ocultar a imagem original
+                image.style.display = "none";
+            }
+
+            function removerFiltro(){
+                let canvas = document.getElementById("canvas");
+
+                // Ocultar o canvas
+                canvas.style.display = "none";
+
+                // Exibir a imagem original
+                image.style.display = "block";
+                
+            }
+        })
+        
+    </script>
+
+    
+</body>
+</html>

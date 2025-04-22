@@ -1,0 +1,182 @@
+
+body{
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, #000, #001057);;
+    min-height: 100vh;
+}
+img{
+    margin-top: 40px;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+.menu img{
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid #b6b5b5;
+}
+
+.menu img:hover{
+    cursor: pointer;
+    opacity: 0.7;
+    border: 2px solid #0429BD;
+}
+
+.barra-pesquisa{
+    margin-top: 40px;
+}
+
+label{
+    color: #CCCCCC;
+    font-family: "Gemunu Libre", serif;
+    font-size: 25px;
+}
+
+input{
+    font-size: 23px;
+}
+
+/* CURSOS */
+
+.conteiner-curso{
+    color: #CCCCCC;
+}
+
+.curso{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #0429BD;
+    width: 180px;
+    height: 200px;
+    background-color: #CCCCCC;
+    border-radius: 7px;
+    font-family: "Gemunu Libre", serif;
+    margin-left: 40px;
+}
+
+.curso img{
+    width: 60px;
+    height: auto;
+    margin-top: 5px;
+}
+
+.conteiner-cursos{
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+    color: #CCCCCC;
+    font-family: "Gemunu Libre", serif;
+    text-align: left-center;
+}
+
+/* PESQUISA */
+
+.resultado-item {
+    background-color: #222; 
+    color: #fff; 
+    border-radius: 8px; 
+    padding: 10px 15px; 
+    margin: 20px 0; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+    width: 300px;
+    font-family: "Gemunu Libre", serif;
+    text-align: center;
+    font-size: 28px;
+}
+
+.resultado-item:hover {
+    transform: scale(1.05); 
+}
+
+.resultado-container {
+    max-width: 600px;
+    margin: 20px auto; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.filtro-tipo{
+    margin-top: 30px;
+}
+
+input::placeholder{
+    font-family: "Gemunu Libre", serif;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #111; /* Cor de fundo escura */
+    color: #fff; /* Cor do texto */
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: "Gemunu Libre", sans-serif;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer nav {
+    margin-top: 10px;
+}
+
+footer nav a {
+    color: #bbb;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+footer nav a:hover {
+    color: #fff;
+}
+
+/* SOBRE */
+.conteiner-sobre{
+    background-color: #bbb;
+    font-family: "Gemunu Libre", sans-serif;
+    font-size: 30px;
+    width: 650px;
+    height: 200px;
+    opacity: 0.7;
+    border-radius: 5px;
+    padding: 50px 55px; 
+    margin: 20px 0; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+
+}

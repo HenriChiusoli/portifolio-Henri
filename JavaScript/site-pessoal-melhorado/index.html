@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Henri</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sobre Mim</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="#sobre" onclick="showSection('sobre')">Quem Sou Eu</a></li>
+                <li><a href="#curriculo" onclick="showSection('curriculo')">Currículo</a></li>
+                <li><a href="#habilidades" onclick="showSection('habilidades')">Habilidades</a></li>
+                <li><a href="#depoimentos" onclick="showSection('depoimentos')">Depoimentos</a></li>
+                <li><a href="#galeria" onclick="showSection('galeria')">Galeria</a></li>
+                <li><a href="#contato" onclick="showSection('contato')">Contato</a></li>
+                <li><a href="#projetos" onclick="showSection('projetos')">Projetos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="sobre" class="content">
+            <h2>Quem Sou Eu</h2>
+            <p>Olá, meu nome é Henri. Sou um profissional dedicado e apaixonado pelo que faço!</p>
+            <p>Sou formado em Analise e Desenvolvimento de Sistemas.</p>
+        </section>
+
+        <section id="curriculo" class="content" style="display: none;">
+            <h2>Currículo</h2>
+            <p>Veja meu currículo completo abaixo:</p>
+            <a href="imagens/Curriculo Henri 1.0.pdf" download>Baixar Currículo</a>
+        </section>
+
+        <section id="habilidades" class="content" style="display: none;">
+            <h2>Minhas Habilidades</h2>
+            <ul>
+                <li>Desenvolvimento Front-End (HTML, CSS, JavaScript)</li>
+                <li>Desenvolvimento Back-End (Node.js, Python)</li>
+                <li>Gerenciamento de Projetos</li>
+                <li>Comunicação e Trabalho em Equipe</li>
+            </ul>
+        </section>
+
+        <section id="depoimentos" class="content" style="display: none;">
+            <h2>Depoimentos</h2>
+            <p>"Henri é um profissional extremamente dedicado e detalhista. Recomendo fortemente!" - Emiliana Perego</p>
+            <p>"Foi um prazer trabalhar com Henri em vários projetos de sucesso." - Isadora Moraes</p>
+        </section>
+
+        <section id="galeria" class="content" style="display: none;">
+            <h2>Galeria de Imagens</h2>
+            <div class="galeria-container">
+                <img src="imagens/imagem7.avif" alt="Descrição da Imagem 1">
+                <img src="imagens/imagem4.png" alt="Descrição da Imagem 2">
+                <img src="imagens/imagem5.jpg" alt="Descrição da Imagem 3">
+            </div>
+        </section>
+
+        <section id="contato" class="content" style="display: none;">
+            <h2>Entre em Contato</h2>
+            <form action="mailto:seuemail@exemplo.com" method="post" enctype="text/plain">
+                <label for="nome">Nome:</label><br>
+                <input type="text" id="nome" name="nome" required><br>
+                <label for="email">E-mail:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="mensagem">Mensagem:</label><br>
+                <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <section id="projetos" class="content" style="display: none;">
+            <h2>Meus Projetos</h2>
+            <ul>
+                <li><a href="https://github.com/seuusuario/projeto1" target="_blank">Projeto 1: Sistema de Gerenciamento</a></li>
+                <li><a href="https://github.com/seuusuario/projeto2" target="_blank">Projeto 2: Website Responsivo</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 - Criado por Henri</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

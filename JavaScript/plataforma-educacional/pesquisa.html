@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMind - Resultado da pesquisa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&display=swap" rel="stylesheet">
+
+    
+
+</head>
+<body>
+
+    <img src="imagens/logo-1-SF.png" alt="Logo TechMind">
+ 
+    <div class="barra-pesquisa">
+        <label for="pesquisar">Pesquisar: </label>
+        <input type="search" id="pesquisar" placeholder="Conteúdo que você quer aprender">
+    </div>
+
+    <div class="filtro-tipo">
+        <label>Filtrar por tipo:</label>
+        <input type="radio" name="tipo" value="todos" id="todos" checked> <label for="todos">Todos</label>
+        <input type="radio" name="tipo" value="curso" id="curso"> <label for="curso">Curso</label>
+        <input type="radio" name="tipo" value="video" id="video"> <label for="video">Vídeo</label>
+        <input type="radio" name="tipo" value="exercicio" id="exercicio"> <label for="exercicio">Exercício</label>
+        <input type="radio" name="tipo" value="desafio" id="desafio"> <label for="desafio">Desafio</label>
+    </div>
+
+    <div class="resultado-container">
+        <p style="color: white;" id="resultado"></p>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 TechMind - Todos os direitos reservados.</p>
+            <nav>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Política de Privacidade</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        const conteudo = [
+            { id: 1, nome: "java", tipo: "curso"},
+            { id: 2, nome: "java", tipo: "video"},
+            { id: 3, nome: "javascript", tipo: "curso"},
+            { id: 4, nome: "javascript", tipo: "video"},
+            { id: 5, nome: "javascript", tipo: "exercicio"},
+            { id: 6, nome: "javascript", tipo: "desafio"},
+            { id: 7, nome: "python", tipo: "curso"},
+            { id: 8, nome: "python", tipo: "video"},
+            { id: 9, nome: "python", tipo: "desafio"},
+        ];
+
+        const inputPesquisa = document.getElementById("pesquisar");
+        const resultadoDiv = document.getElementById("resultado");
+        const radios = document.querySelectorAll("input[name='tipo']");
+
+        const params = new URLSearchParams(window.location.search);
+        const termoURL = params.get("query");
+
+        if (termoURL) {
+            inputPesquisa.value = termoURL; // Preenche a barra de pesquisa
+        }
+
+
+
+        function filtrarConteudo() {
+            const termo = inputPesquisa.value.toLowerCase().trim();
+            const tipoSelecionado = document.querySelector("input[name='tipo']:checked").value;
+
+            let filtrado = conteudo.filter(item => item.nome.includes(termo));
+
+            if (tipoSelecionado !== "todos") {
+                filtrado = filtrado.filter(item => item.tipo === tipoSelecionado);
+            }
+
+            resultadoDiv.innerHTML = filtrado.length
+                ? filtrado.map(item => `<div class="resultado-item">${item.nome} - ${item.tipo}</div>`).join("")
+                : "<p>Nenhum resultado encontrado</p>";
+
+        }
+
+        inputPesquisa.addEventListener("input", filtrarConteudo);
+        radios.forEach(radio => radio.addEventListener("change", filtrarConteudo));
+
+    // Se a pesquisa veio da URL, já realiza a filtragem ao carregar a página
+    if (termoURL) {
+        filtrarConteudo();
+    }
+
+    </script>
+    
+</body>
+</html>

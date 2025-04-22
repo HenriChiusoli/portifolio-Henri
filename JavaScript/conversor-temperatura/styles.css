@@ -1,0 +1,71 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.conversor {
+    text-align: center;
+    background-image: linear-gradient(165deg, rgb(119, 236, 187), rgb(7, 163, 129)); 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    max-width: 400px;
+    width: 100%;
+}
+
+.selectsUnidade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.conversor h1 {
+    margin-bottom: 20px;
+    color: #363636;
+    text-shadow: 2px 2px 8px #797979;
+    font-weight: 600;
+    font-size: 1.8em;
+}
+
+input, select, button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.1);
+}
+
+input{
+    width: calc(100% - 220px);
+}
+
+select, button {
+    width: calc(100% - 20px);
+}
+
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    background: #2485ee;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    width: 150px;
+    box-shadow: 0 4px 3px rgba(0,0,0,0.3);
+}
+
+button:hover {
+    background: #0458b3;
+    transform: scale(1.02);
+}

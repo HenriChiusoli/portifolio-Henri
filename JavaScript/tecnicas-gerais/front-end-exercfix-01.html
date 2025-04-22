@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+    <h1 style="text-align: center;">Qual é a categoria da sua cidade?</h1>
+
+    <div style="display: flex; justify-content: center;">
+        <label for="habitantes">Digite o número de habitantes: </label>
+        <input type="text" name="habitantes" id="habitantes" style="margin-left: 5px;">
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <button id="btnOK" style="width: 60px; background-color: rgb(45, 218, 45); border-color: rgb(27, 161, 45); border-radius: 5px;">OK</button>
+        <button id="btnLimpar" style="width: 60px; background-color:rgb(212, 52, 84); border-color:rgb(136, 6, 6); color:rgb(228, 228, 228); border-radius: 5px; margin-left: 5px;">Limpar</button>
+    </div>
+    
+    <p id="resultado" style="font-size: 20px; text-align: center;">O resultado aparecerá aqui.</p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("btnOK").addEventListener("click", function() {
+                let qtdeHabitantes = Number(document.getElementById("habitantes").value);
+                let classificacao = "";
+                
+                if(!(isNaN(qtdeHabitantes))){
+                    if (qtdeHabitantes <= 10000){
+                        classificacao = "pequena";
+                    }else if( qtdeHabitantes <= 50000){
+                        classificacao = "média";
+                    }else if( qtdeHabitantes <= 100000){
+                        classificacao = "grande";
+                    }else if(qtdeHabitantes >= 1000000){
+                        classificacao = "metrópole";
+                    }
+                    document.getElementById("resultado").innerHTML = "A cidade é classificada como: " + classificacao + ".";
+                }else{
+                    document.getElementById("resultado").innerHTML = "Digite apenas números";
+                    document.getElementById("habitantes").value = "";
+                    document.getElementById("habitantes").focus();
+                }
+
+            });
+
+            document.getElementById("btnLimpar").addEventListener("click", function(){
+                document.getElementById("habitantes").value = "";
+                document.getElementById("habitantes").focus();
+                document.getElementById("resultado").innerHTML = "O resultado aparecerá aqui";
+            })
+
+
+        });
+    </script>
+    
+</body>
+</html>

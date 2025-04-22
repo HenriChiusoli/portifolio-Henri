@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Conversão de Tipos em Javascript</h1> 
+    
+    <label for="entrada">Digite um valor</label>
+    <input type="text" id="entrada">   
+    <button id="converter">Converter para Número</button>
+
+    <p id="resultado">O resultado aparecerá aqui</p>
+
+    <script>
+        // Esperar o carregamento do DOM
+        document.addEventListener("DOMContentLoaded",function() {
+            // Adicionar evento de clique ao botão
+            document.getElementById("converter").addEventListener("click", function() {
+                // Capturar a entrada do usuário
+                let entradaUsuario = document.getElementById("entrada").value;
+                //document.getElementById("resultado").innerHTML = entradaUsuario;
+                let numeroConvertido = Number(entradaUsuario);
+
+                if (!isNaN(numeroConvertido)) {
+
+                }
+                else {
+
+                }
+            })
+        });
+    </script>
+</body>
+</html>
