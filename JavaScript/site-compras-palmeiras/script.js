@@ -2,7 +2,7 @@
 const products = [
     {
         id: 1,
-        name: "Camiseta Palmeiras Home",
+        name: "Camiseta Palmeiras Home 2025",
         price: 370,
         image: "imagens/palmeiras-home.avif",
         details: "productDetails.html",
@@ -12,7 +12,7 @@ const products = [
     },
     {
         id: 2,
-        name: "Camiseta Palmeiras Away",
+        name: "Camiseta Palmeiras Away 2025",
         price: 350,
         image: "imagens/palmeiras-away.png",
         details: "productDetails.html",
@@ -29,6 +29,16 @@ const products = [
         description: "Camiseta especial em edição limitada com detalhes exclusivos para colecionadores.",
         sizes: ["P", "M", "G", "GG"],
         material: "Mistura de algodão e poliéster"
+    },
+    {
+        id: 4,
+        name: "Camiseta Palmeiras Home 2024",
+        price: 180,
+        image: "imagens/palmeiras-home-2024.webp",
+        details: "productDetails.html",
+        description: "Camiseta oficial do Palmeiras para jogos em casa. Material leve e confortável.",
+        sizes: ["P", "M", "G", "GG"],
+        material: "100% poliéster"
     }
 ];
 
@@ -72,7 +82,8 @@ function renderProductDetails(product) {
     const modelImages = {
         1: "imagens/palmeiras-home-modelo.png",
         2: "imagens/palmeiras-away-modelo.jpeg",
-        3: "imagens/palmeiras-limited-edition-modelo.jpg"
+        3: "imagens/palmeiras-limited-edition-modelo.jpg",
+        4: "imagens/palmeiras-home-modelo-2024.avif",
     };
 
     const productImage = modelImages[product.id] || "default-image.jpg";
