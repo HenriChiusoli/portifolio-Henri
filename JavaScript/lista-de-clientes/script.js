@@ -12,17 +12,23 @@ function salvarClientes() {
 function renderizarClientes() {
   lista.innerHTML = "";
 
-  clientes.forEach(cliente => {
+  clientes.forEach((cliente, index) => {
     const div = document.createElement("div");
     div.classList.add("cliente");
 
     div.innerHTML = `
       <h3>${cliente.nome}</h3>
       <p>${cliente.email}</p>
-    `;
+      <button onclick="removerCliente(${index})">Remover</button>`;
 
     lista.appendChild(div);
   });
+}
+
+function removerCliente(index) {
+  clientes.splice(index, 1);
+  salvarClientes();
+  renderizarClientes();
 }
 
 form.addEventListener("submit", function (e) {

@@ -49,3 +49,17 @@ form button:hover {
   margin: 0;
   color: #555;
 }
+
+.cliente button {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.cliente button:hover {
+  background-color: #b02a37;
+}
