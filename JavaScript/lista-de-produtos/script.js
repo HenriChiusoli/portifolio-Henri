@@ -1,9 +1,13 @@
-let produtos = [];
+let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
 const formProduto = document.getElementById("form-produto");
 const listaProdutos = document.getElementById("lista-produtos");
 const nomeProdutoInput = document.getElementById("nomeProduto");
 const precoProdutoInput = document.getElementById("precoProduto");
+
+function salvarProdutos() {
+  localStorage.setItem("produtos", JSON.stringify(produtos));
+}
 
 function renderizarProdutos() {
   listaProdutos.innerHTML = "";
@@ -15,8 +19,7 @@ function renderizarProdutos() {
     div.innerHTML = `
       <h3>${produto.nome}</h3>
       <p>R$ ${produto.preco}</p>
-      <button onclick="removerProduto(${index})">Remover</button>
-    `;
+      <button onclick="removerProduto(${index})">Remover</button>`;
 
     listaProdutos.appendChild(div);
   });
@@ -24,6 +27,7 @@ function renderizarProdutos() {
 
 function removerProduto(index) {
   produtos.splice(index, 1);
+  salvarProdutos();
   renderizarProdutos();
 }
 
@@ -36,8 +40,11 @@ formProduto.addEventListener("submit", function (e) {
   };
 
   produtos.push(produto);
+  salvarProdutos();
   renderizarProdutos();
 
   nomeProdutoInput.value = "";
   precoProdutoInput.value = "";
 });
+
+renderizarProdutos();
