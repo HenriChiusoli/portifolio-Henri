@@ -1,9 +1,13 @@
-const clientes = [];
+let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
 
 const form = document.getElementById("form-cliente");
 const lista = document.getElementById("lista-clientes");
 const nomeInput = document.getElementById("nome");
 const emailInput = document.getElementById("email");
+
+function salvarClientes() {
+  localStorage.setItem("clientes", JSON.stringify(clientes));
+}
 
 function renderizarClientes() {
   lista.innerHTML = "";
@@ -30,8 +34,11 @@ form.addEventListener("submit", function (e) {
   };
 
   clientes.push(cliente);
+  salvarClientes();
   renderizarClientes();
 
   nomeInput.value = "";
   emailInput.value = "";
 });
+
+renderizarClientes();
