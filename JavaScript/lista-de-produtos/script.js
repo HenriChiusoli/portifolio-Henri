@@ -1,44 +1,43 @@
-const produtos = [
-  { nome: "Mouse", preco: 50 },
-  { nome: "Teclado", preco: 120 }
-];
+let produtos = [];
 
-const lista = document.getElementById("lista-produtos");
-const form = document.getElementById("form-produto");
-const nomeInput = document.getElementById("nome");
-const precoInput = document.getElementById("preco");
+const formProduto = document.getElementById("form-produto");
+const listaProdutos = document.getElementById("lista-produtos");
+const nomeProdutoInput = document.getElementById("nomeProduto");
+const precoProdutoInput = document.getElementById("precoProduto");
 
 function renderizarProdutos() {
-  lista.innerHTML = "";
+  listaProdutos.innerHTML = "";
 
   produtos.forEach((produto, index) => {
     const div = document.createElement("div");
     div.classList.add("produto");
 
     div.innerHTML = `
-      <h2>${produto.nome}</h2>
+      <h3>${produto.nome}</h3>
       <p>R$ ${produto.preco}</p>
-      <button onclick="comprarProduto(${index})">Comprar</button>`;
+      <button onclick="removerProduto(${index})">Remover</button>
+    `;
 
-    lista.appendChild(div);
+    listaProdutos.appendChild(div);
   });
 }
 
-function comprarProduto(index) {
-  alert(`Você comprou: ${produtos[index].nome}`);
+function removerProduto(index) {
+  produtos.splice(index, 1);
+  renderizarProdutos();
 }
 
-form.addEventListener("submit", function (e) {
+formProduto.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const nome = nomeInput.value;
-  const preco = precoInput.value;
+  const produto = {
+    nome: nomeProdutoInput.value,
+    preco: precoProdutoInput.value
+  };
 
-  produtos.push({ nome, preco });
+  produtos.push(produto);
   renderizarProdutos();
 
-  nomeInput.value = "";
-  precoInput.value = "";
+  nomeProdutoInput.value = "";
+  precoProdutoInput.value = "";
 });
-
-renderizarProdutos();
